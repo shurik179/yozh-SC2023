@@ -2,7 +2,7 @@ Initialization and general functions
 ====================================
 
 To begin using the library, you need to put the following in the beginning of
-your `code.py` file:
+your `main.py` file:
 
 .. code-block:: python
 
@@ -31,7 +31,7 @@ Here are some basic functions:
 
 .. function:: begin()
 
-   Shows basic info (firmware version, battery voltage) on OLED screen 
+   Shows basic info (firmware version, battery voltage) on OLED screen
 
 .. function:: fw_version()
 

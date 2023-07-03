@@ -5,6 +5,9 @@ Python Primer
 These commands are not directly related to Yozh, but can serve as useful cheat
 sheet for people new to MicroPython.
 
+For more information about MicroPython on RP2040 microcontrollers, see
+`MicroPython website <https://docs.micropython.org/en/latest/rp2/quickref.html#>`__
+
 Recall that in Python, indentation is important!
 
 Comments
@@ -169,7 +172,7 @@ you want printed; refer to Python documentation for details.
 Time control
 ============
 
-The commands below  are defined in `time` module. Thus, to use them you must put
+The commands below  are defined in `time` module.  Thus, to use them you must put
 `include time`  in your Python file.
 
 To pause the execution of the program for given time, use
@@ -178,17 +181,16 @@ To pause the execution of the program for given time, use
 
    time.sleep(time_in_seconds)
 
-To time various events, you can use the `time.monotonic()`  timer:
+To time various events, you can use the `time.ticks_ms()` milliseond counter
+(this is specific to RP2040 microcontoller):
 
 .. code-block:: python
 
-   t0 = time.monotonic()
+   t0 = time.ticks_ms()
    ...
-   t1=time.monotonic()
-   time_interval = t1-t0 #duration in seconds
+   t1=time.ticks_ms()
+   time_interval = t1-t0 #duration in milliseconds
 
-Note that it only makes sense to consider the difference of timer values; there
-is no way of predicting what the value of `time.monotonic()` is at the beginning of the program.
 
 
 Miscellaneous
@@ -216,4 +218,4 @@ Also, Python has a special function that does nothing, named `pass`:
       pass
 
 
-This is commonly used as a placeholder to be replaced later by actual commands. 
+This is commonly used as a placeholder to be replaced later by actual commands.

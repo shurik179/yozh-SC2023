@@ -3,13 +3,13 @@
 Yozh Library Reference
 **************************
 
-In this chapter, we give full list of all commands provided by Yozh Circuit Python
+In this chapter, we give full list of all commands provided by Yozh MicroPython
 library. We assume that the user has already installed Yozh library on the
 robot, as described in the :ref:`Quickstart Guide <quickstart>`.
 
 
 This document describes version 2.0 of the library. It is intended to be used
-with CircuitPython 7.
+with MicroPython 1.20 or later.
 
 
 

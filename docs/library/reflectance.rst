@@ -1,7 +1,7 @@
 Reflectance sensor array
 ========================
 Yozh has a built-in array of reflectance sensors, pointed down. These sensors
-can be used to detect filed borders, for following the line, and other similar
+can be used for detecting field borders, for following the line, and other similar
 tasks.
 
 Basic usage
@@ -16,7 +16,9 @@ Basic usage
 .. function:: linearray_raw(i)
 
    Returns raw reading of sensor ``i``. One can use either indices 0...7 or
-   (preferred) named values ``bot.A1 = 0`` ... ``bot.A8 = 7``.
+   (preferred) named values ``bot.A1 = 0`` ... ``bot.A8 = 7``. A1 is the
+   rightmost sensor, and A8, leftmost.
+
    Readings range 0-1023 depending on amount of reflected light: the more light
    reflected, the **lower** the value. Typical reading on white paper is about 50-80, and on
    black painted plywood,  950. Note that black surfaces can be unexpectedly
@@ -51,6 +53,12 @@ readings.
 
    Returns ``True`` if sensor ``i`` is on black and false otherwise.
 
+.. function:: all_on_black()
+
+.. function:: all_on_white()
+
+   Returns ``True`` if all 8 sensors are on black (resepctively, on white) and
+   ``False`` otherwise.
 
 Line following
 --------------
@@ -74,8 +82,9 @@ Yozh library provides the helper function.
     This command only uses the central 6 sensors; rightmost and leftmost sensor
     (A1 and A8) are not used.
 
-    If there is no line under these sensors, the value returned by this command
-    will be close to 0, but can not be relied on.
+    If there is no line under these sensors, the function returns `None` value.
+    Thus, before using the retunred value in any computations, check that it is not `None`.
+    
 
 .. function:: line_position_black()
 

@@ -25,15 +25,24 @@ def check_intersection():
     path_left = False
     path_right = False
     path_forward = False
+
     bot.set_motors(30,30)
-    while bot.get_distance()<5:
+    while bot.get_distance()<4:
         if bot.sensor_on_white(bot.A1):
             path_right = True
         if bot.sensor_on_white(bot.A8):
             path_left = True
-    if (not bot.all_on_black):
+    if (not bot.all_on_black()):
         path_forward = True
-    bot.set_leds
+    bot.stop_motors()
+    left_color=RED
+    if path_left:
+        left_color = GREEN
+    right_color=RED
+    if path_right:
+        right_color = GREEN
+    bot.set_leds(left_color,right_color)
+    return [path_left,path_forward,path_right]
 
 
 
@@ -58,4 +67,24 @@ bot.wait_for(bot.button_B)
 
 while True:
     go_to_intersection()
+    paths = check_intersection()
+    bot.clear_display()
+    bot.set_text("Left: {}".format(paths[0]), 0)
+    bot.set_text("Front: {}".format(paths[1]), 1)
+    bot.set_text("Right: {}".format(paths[2]), 2)
     bot.buzz(660,1.0)
+    if paths[0]:
+        bot.turn(-90)
+    elif paths[1]:
+        pass
+    elif paths[2]:
+        bot.turn(90)
+    else:
+        bot.turn(180)
+        bot.go_forward(2)
+    bot.wait_for(bot.button_B)
+
+
+
+
+

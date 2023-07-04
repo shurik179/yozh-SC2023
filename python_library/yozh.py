@@ -174,7 +174,7 @@ class Yozh:
         self.A8=7
         # various constants
         self.CM_TO_TICKS = 150
-        self.DEG_TO_TICKS = 14
+        self.DEG_TO_TICKS = 12
         # basic configuration of PID
         self.configure_PID(maxspeed=4200)
         self._pid = False
@@ -529,15 +529,6 @@ class Yozh:
             if raw_values[i] <self._threshold:
                 on_black = False
         return on_black
-
-    def all_on_white(self):
-        raw_values = [0]*8
-        self._read_16_array(YOZH_REG_LINEARRAY_RAW, raw_values)
-        on_white = True
-        for i in range(8):
-            if raw_values[i] >self._threshold:
-                on_white = False
-        return on_white
 
 
     def line_position_white(self):

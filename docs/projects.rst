@@ -4,7 +4,9 @@ Projects
 *****************
 
 In this chapter, we discuss several simple projects that can be done
-using Yozh,
+using Yozh.
+
+
 .. toctree::
     :caption: Table of Contents
     :maxdepth: 2

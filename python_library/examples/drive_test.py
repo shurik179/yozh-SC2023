@@ -23,11 +23,17 @@ bot.set_text("Press button A \n to continue", 0)
 #wait until user presses button A
 bot.wait_for(bot.button_A)
 bot.buzz(660,1.0)
+bot.clear_display()
+bot.set_text("Press button B \nto stop", 3)
+
 while True:
     # go forward for 60 cm at 50% speed
     bot.go_forward(60,50)
-    bot.turn(90)
     distance = bot.get_distance()
-    bot.clear_display()
-    bot.set_text("dist: {}".format(distance))
-    sleep(0.5)
+    bot.set_text("dist: {}".format(distance),0)
+    bot.turn(90)
+    sleep(1.0)
+
+bot.stop_motors()
+bot.clear_display()
+bot.set_text("Test complete!",1)

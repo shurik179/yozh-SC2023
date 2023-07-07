@@ -174,7 +174,7 @@ class Yozh:
         self.A8=7
         # various constants
         self.CM_TO_TICKS = 150
-        self.DEG_TO_TICKS = 12
+        self.DEG_TO_TICKS = 14
         # basic configuration of PID
         self.configure_PID(maxspeed=4200)
         self._pid = False
@@ -603,15 +603,18 @@ class Yozh:
 ##########  DISPLAY  ########################################
 
     def clear_display(self):
-        self._oled.fill_rect(0,0,128,64,0)
+        self._oled.fill(0)
         self._oled.show()
 
-    def set_text(self, text, line):
+    def set_text(self, text, line, clear = True):
         lines = text.splitlines()
         i = 0
         for l in lines:
             if (i < 6):
-                self._oled.text(l, 0, (line+i)*11)
+                y = (line+i)*11
+                if clear:
+                    self._oled.fill_rect(0,y,128,11,0)
+                self._oled.text(l, 0, y)
             i+=1
 
         self._oled.show()
@@ -685,3 +688,5 @@ class Yozh:
             return (raw - (1<<32))
         else:
             return raw
+
+

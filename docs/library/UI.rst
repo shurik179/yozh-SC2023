@@ -84,7 +84,8 @@ The easiest way to interact with OLED display is by using the commands below.
 
 .. function:: set_text(text, line_number)
 
-   Prints a line of text on OLED display, on line number `line_number`. Note
+   Prints a line of text on OLED display, on line number `line_number`, erasing
+   all previous contents of that line. Note
    that line numbers start with 0, not 1!
    If the text to print includes line break character `\n`, the line is broken
    and continues on next line, e.g.
@@ -93,7 +94,3 @@ The easiest way to interact with OLED display is by using the commands below.
 
    bot.set_text("Initialized", 0)
    bot.set_text("Press A to \n continue", 1)
-
-
-Note that `set_text()` command does not erase previously written text; it writes
-over it.  Thus, you normally want to use `clear_display()` before writing new text.        

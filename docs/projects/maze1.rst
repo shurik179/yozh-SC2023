@@ -50,18 +50,18 @@ Function `check_intersection()` should do three things:
 1. Slowly advance forward until  the center (not front!)  of the robot is
    above the intersection.
 
-2. While doing this, keep checking check whether there is a passage to the left
+2. While doing this, keep checking  whether there is a passage to the left
    and record it somehow; same for passage to the right
 
 3. once we advanced  so that the center of the robot is above the intersection,
    also check if there is a passage forward.
 
- We can achieve this by asking the robot to start moving  forward until
- we have travelled 5 cm;  while doing this, we will be checking the
- line sensors. If the leftmost line sensor (A8)  sees white, it means that
- there is a passage to the left. To record it, we can create boolean variable
- `path_left` and set it to `True` once the sensor A8 sees white
- (Also, we should remember to set it   to `False` initially):
+We can achieve this by asking the robot to start moving  forward until
+we have travelled 5 cm;  while doing this, we will be checking the
+line sensors. If the leftmost line sensor (A8)  sees white, it means that
+there is a passage to the left. To record it, we can create boolean variable
+`path_left` and set it to `True` once the sensor A8 sees white
+(Also, we should remember to set it   to `False` initially):
 
 
 .. code-block:: python
@@ -79,7 +79,7 @@ Function `check_intersection()` should do three things:
 
 
 We should also add similar code for determining whether there is a path to
-the right (left to the reader as exercise).
+the right (left to the reader as an exercise).
 
 Next, once we advanced, we need to check if there is a passage ahead.
 This is easy using `all_on_black()` function (if there is no passage forward,
@@ -88,7 +88,7 @@ all sensors will be on black).
 Finally, we need somehow to return this information to whatever place in our
 program called this function. If we needed to return one value, we could just
 say `return(path_left)`, but here we need to return 3 boolean values:
-`path_left`, 'path_forward', `path_right`. One way is put them in  a list and
+`path_left`, `path_forward`, `path_right`. One way to do that is to put them in  a list and
 return the list. This gives the following code:
 
 .. code-block:: python

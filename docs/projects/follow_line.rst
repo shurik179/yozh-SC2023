@@ -23,7 +23,7 @@ correcting before we get off the line. Yozh library provides a function that all
 to determine the position of the line relative to the center of the robot:
 `line_position_white()`, which returns values ranging from -5 to 5.
 
- To correct, we would be going forward but
+To correct, we would be going forward but
 steering more to the left or right as needed: if the line is to the left of the robot
 center, we must be steering left; if the line is to the right, we must be steering right.
 

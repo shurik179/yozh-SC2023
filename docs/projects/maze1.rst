@@ -1,17 +1,21 @@
 Maze runner: wall following
 ============================
-In this challenge, we will teach teh robot find its way out of a maze.
+In this challenge, we will teach the robot find its way out of a maze.
 The maze is made of approx. 3x5 ft sheet of plywood, painted black.
 White masking tape (3/4 inch  wide) is used to mark passages
 forming the maze; these lines follow rectangular grid with
 0.5 ft squares.
 
+.. figure:: ../images/maze.png
+    :alt: Front view
+    :width: 60%
+
 Finding a way out of a maze is a classic problem, and there is a number of algorithms
-for doing that. The simplest of them is the wall following rule:
+for doing that. The simplest of them is the wall following rule.
 
 Start following passages, and whenever you reach a junction always follow the
 leftmost open passage. This is  equivalent to a human walking in the  a maze by
-putting his hand on the left wall and keeping it on the wall as he walks through.
+putting his  hand on the left wall and keeping it on the wall as he walks through.
 
 
 This method  is guaranteed to find an exit if we start at the entrance
@@ -40,7 +44,7 @@ are above an intersection). This function is very similar to line follower algor
 from the previous project, with added checks: it should stop when reflectance
 sensor A1 (rightmost) or A8 (leftmost) sees white.
 
-Function `check_intersection()` should do two things:
+Function `check_intersection()` should do three things:
 
 
 1. Slowly advance forward until  the center (not front!)  of the robot is

@@ -6,9 +6,9 @@ These commands are not directly related to Yozh, but can serve as useful cheat
 sheet for people new to MicroPython.
 
 For more information about MicroPython on RP2040 microcontrollers, see
-`MicroPython website <https://docs.micropython.org/en/latest/rp2/quickref.html#>`__
+`MicroPython website <https://docs.micropython.org/en/latest/rp2/quickref.html#>`__.
 
-Recall that in Python, indentation is important!
+Remember  that in Python, indentation is important!
 
 Comments
 ========
@@ -104,14 +104,31 @@ use the form below; `elif` is short for `else if`
 .. code-block:: python
 
    if condition:
-     some operators
+      some operators
    elif:
-     some more operators
+      some more operators
    else:
-    other operators
+      other operators
 
 
+Functions
+---------
 
+You can define your own function and call it later:
+
+.. code-block:: python
+
+   def factorial(n):
+       result = 1
+       for i in range (n):
+           result = result * (i+1)
+       return(result)
+
+   print("20!={}".format(factorial(20)))
+
+Note: a function must be defined **before** it is called. Also, please note that
+a function can not access variables defined outside of the function; if you need
+this, read about global variables in Python docs. 
 
 Loops
 -----

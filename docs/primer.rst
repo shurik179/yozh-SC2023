@@ -111,24 +111,6 @@ use the form below; `elif` is short for `else if`
       other operators
 
 
-Functions
----------
-
-You can define your own function and call it later:
-
-.. code-block:: python
-
-   def factorial(n):
-       result = 1
-       for i in range (n):
-           result = result * (i+1)
-       return(result)
-
-   print("20!={}".format(factorial(20)))
-
-Note: a function must be defined **before** it is called. Also, please note that
-a function can not access variables defined outside of the function; if you need
-this, read about global variables in Python docs. 
 
 Loops
 -----
@@ -151,6 +133,25 @@ Loops
 A list can be defined  explicitly, e.g. list = ["A", "B", "C"].
 More commonly, if you want the  loop to be repeated N times,
 for all values of i from 0 to N-1, you use `for i in range(N)`
+
+Functions
+=========
+
+You can define your own function and call it later:
+
+.. code-block:: python
+
+   def factorial(n):
+       result = 1
+       for i in range (n):
+           result = result * (i+1)
+       return(result)
+
+   print("20!={}".format(factorial(20)))
+
+Note: a function must be defined **before** it is called. Also, please note that
+a function can not access variables defined outside of the function; if you need
+this, read about global variables in Python docs.
 
 
 Printing

@@ -19,7 +19,11 @@ will only start correcting its course when it gets completely off the line.
 Since we have a whole array of front line sensors, we can use them
 to detect even small deviation from the right course - when the robot is still
 on the line, but the line is not exactly under the center of the robot - and start
-correcting before we get off the line. To correct, we would be going forward but
+correcting before we get off the line. Yozh library provides a function that allows one
+to determine the position of the line relative to the center of the robot:
+`line_position_white()`, which returns values ranging from -5 to 5.
+
+ To correct, we would be going forward but
 steering more to the left or right as needed: if the line is to the left of the robot
 center, we must be steering left; if the line is to the right, we must be steering right.
 
@@ -102,4 +106,5 @@ Here is a corrected version:
         error = bot.line_position_white()
     bot.stop_motors()
 
-As before, you also need to include the code for initialization and sensor calibration 
+As before, you also need to include the code for initialization and sensor
+calibration.

@@ -14,8 +14,8 @@ First attempt (in pseudocode, not including the intialization):
     turn around
 
 
-To see the boundary, we use reflectance sesnsor array, namely function
-`all_on_black()`: if this fucntion returns `False`, at least one of the sensors
+To see the boundary, we use reflectance sensor array, namely function
+`all_on_black()`: if this function returns `False`, at least one of the sensors
 sees the white boundary. We also replace "go forward until..." by more common `while` loop:
 
 .. code-block:: python
@@ -29,7 +29,7 @@ sees the white boundary. We also replace "go forward until..." by more common `w
 
 
 Note that there is no need to set motor speed inside `while bot.all_on_black()`
-loop: the motors are already runnign and will continue doing so until you
+loop: the motors are already running and will continue doing so until you
 explicitly stop them .
 `
 
@@ -39,7 +39,7 @@ Finally, we enclose it in `while True` loop to make it repeat forever:
 
     while True:
         bot.set_motors(30,30)
-        while bot.all_on_black:
+        while bot.all_on_black():
             pass
         #if we are here, it means at least one of sensors sees white
         bot.stop_motors()

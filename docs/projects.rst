@@ -13,5 +13,5 @@ using Yozh.
 
     projects/stay_inside
     projects/follow_line
-    projects/maze_right_hand
+    projects/maze1
     projects/maze_pledge

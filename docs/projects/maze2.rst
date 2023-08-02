@@ -62,7 +62,7 @@ the robot needs to turn so that the wall is on its left. Normally it would be ju
 turn; however, if we are at a dead end, we need to turn 180 degrees. Thus, we need to know
 whether there is a passage to the right. Therefore, we add one more condition to the final state of ``goToWall()``:
 
-* Final state: robot is at the intersection, there is a wall ahead (i.e., no passage forward), ``numTurns=0``, and global variable passageRight contains information about whether there is a passage to the right.
+* Final state: robot is at the intersection, there is a wall ahead (i.e., no passage forward), ``numTurns=0``, and global variable ``passageRight`` contains information about whether there is a passage to the right.
 
 To implement these two functions, we will make use of the functions ``goToIntersection()``,
 ``checkIntersection()`` which we used for the wall-following algorithm. 

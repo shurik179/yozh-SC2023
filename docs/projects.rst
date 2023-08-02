@@ -14,4 +14,4 @@ using Yozh.
     projects/stay_inside
     projects/follow_line
     projects/maze1
-    projects/maze_pledge
+    projects/maze2

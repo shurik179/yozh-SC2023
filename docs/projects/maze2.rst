@@ -71,6 +71,7 @@ Implementing ``goToWall()`` is trivial.
 For followWall(), in the beginning we must put
 
 .. code-block:: python
+
 	if passageRight:
 	    turn(90)
 	    numTurns += 1

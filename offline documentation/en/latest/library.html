@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yozh Library Reference &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Initialization and general functions" href="library/init.html" />
+    <link rel="prev" title="Maze runner: pledge algorithm" href="projects/maze2.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "library", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="primer.html">Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="library.html#">Yozh Library Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="library/init.html">Initialization and general functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library/UI.html">Display, buttons, LEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library/motors.html">Motor control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library/servos.html">Servos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library/reflectance.html">Reflectance sensor array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library/distance.html">Distance sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="library/imu.html">Inertial Motion Unit</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Yozh Library Reference</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/library.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="yozh-library-reference">
+<span id="library"></span><h1>Yozh Library Reference<a class="headerlink" href="library.html#yozh-library-reference" title="Permalink to this heading"></a></h1>
+<p>In this chapter, we give full list of all commands provided by Yozh MicroPython
+library. We assume that the user has already installed Yozh library on the
+robot, as described in the <a class="reference internal" href="quickstart.html#quickstart"><span class="std std-ref">Quickstart Guide</span></a>.</p>
+<p>This document describes version 2.0 of the library. It is intended to be used
+with MicroPython 1.20 or later.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="library/init.html">Initialization and general functions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/UI.html">Display, buttons, LEDs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/motors.html">Motor control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/servos.html">Servos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/reflectance.html">Reflectance sensor array</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/distance.html">Distance sensors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library/imu.html">Inertial Motion Unit</a></li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="projects/maze2.html" class="btn btn-neutral float-left" title="Maze runner: pledge algorithm" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="library/init.html" class="btn btn-neutral float-right" title="Initialization and general functions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

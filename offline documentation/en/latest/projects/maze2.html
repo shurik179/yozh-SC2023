@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maze runner: pledge algorithm &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Yozh Library Reference" href="../library.html" />
+    <link rel="prev" title="Maze runner: wall following" href="maze1.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "projects/maze2", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../projects.html">Projects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stay_inside.html">Stay inside the field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="follow_line.html">Line follower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maze1.html">Maze runner: wall following</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="maze2.html#">Maze runner: pledge algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Yozh Library Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../projects.html">Projects</a></li>
+      <li class="breadcrumb-item active">Maze runner: pledge algorithm</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/projects/maze2.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="maze-runner-pledge-algorithm">
+<h1>Maze runner: pledge algorithm<a class="headerlink" href="maze2.html#maze-runner-pledge-algorithm" title="Permalink to this heading"></a></h1>
+<p>This is a modified version of wall following that’s able to jump between islands, to solve mazes that wall following cannot.
+It’s a guaranteed way to reach an exit on the outer edge of any 2D maze from any point in the middle.
+However, it is not guaranteed to visit every passage inside the maze, so this algorithm will not help you if you are
+looking for a hidden treasure inside the maze.</p>
+<p>Start by picking a direction, and always move in that direction when possible. When you hit a wall, start wall following,
+using the left hand rule. When wall following, count the number of turns you make, a left turn is -1 and a right turn is 1.
+Continue wall following until your chosen direction is available again and the total number of turns you’ve made is 0; then
+stop following the wall and go in the chosen direction until you hit a wall. Repeat until you find an exit.</p>
+<p>Note: if your chosen direction is available but the total number of turns is not zero (i.e. if you’ve
+turned around 360 degrees or more), keep wall following until you untwist yourself. Note that Pledge
+algorithm may make you visit a passage or the start more than once, although subsequent times will
+always be with different turn totals.</p>
+<figure class="align-center">
+<a class="reference internal image-reference" href="../_images/pledge_algo.jpg"><img alt="Front view" src="../_images/pledge_algo.jpg" style="width: 60%;" /></a>
+</figure>
+<p>In the figure above, thick black lines show the walls of the maze; the red line shows the path of the robot. At point
+1, the robot turns so that it is again heading the same direction as in the beginning; however, the
+number of turns at this point is not zero, so the robot continues following the wall. At point 2, the
+robot is again heading in the original direction, and the number of turns is zero, so it stops following
+the wall. Had the robot left the wall at point 1, it would be running in circles.</p>
+<p>To program the Pledge algorithm, we need to keep track of robot direction and number of turns. In
+fact, just the number of turns is sufficient: if we know the number of turns, we can determine
+the direction. Thus, we introduce a global variable <code class="docutils literal notranslate"><span class="pre">numTurns</span></code>. Every time we turn 90 degrees clockwise,
+<code class="docutils literal notranslate"><span class="pre">numTurns</span></code> is increased by 1; every time we turn 90 degrees counterclockwise, we decrease <code class="docutils literal notranslate"><span class="pre">numTurns</span></code>
+by 1.</p>
+<p>Thus, the draft of the program would be</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">numTurns</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">def</span> <span class="nf">loop</span><span class="p">():</span>
+    <span class="n">goToWall</span><span class="p">()</span>
+    <span class="n">followWall</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p>Function <code class="docutils literal notranslate"><span class="pre">gotoWall()</span></code> goes forward along the line, through intersections, until the robot hits a wall</p></li>
+<li><p>Function <code class="docutils literal notranslate"><span class="pre">followWall()</span></code> follows the wall using left hand rule until we are again facing the same direction as before, with numTurns=0.</p></li>
+</ul>
+<p>For each of these functions, we need to describe carefully what conditions the function expects at the start and in what condition it leaves the robot at the end (which way is it facing? is it at intersection?).</p>
+<dl class="simple">
+<dt>goToWall():</dt><dd><ul class="simple">
+<li><p>Initial condition: robot is on the line (i.e., the line is under the center of the front sensor array; robot could be at intersection), <code class="docutils literal notranslate"><span class="pre">numTurns=0</span></code></p></li>
+<li><p>Final state: robot is at an intersection, there is a wall ahead (i.e., no passage forward), and <code class="docutils literal notranslate"><span class="pre">numTurns=0</span></code></p></li>
+</ul>
+</dd>
+<dt>followWall():</dt><dd><ul class="simple">
+<li><p>Initial condition: robot is at an intersection, there is a wall ahead (i.e., no passage forward), and <code class="docutils literal notranslate"><span class="pre">numTurns=0</span></code></p></li>
+<li><p>Final state: robot is on the line (i.e., the line is under the sensor of the front sensor array; robot could be at intersection), <code class="docutils literal notranslate"><span class="pre">numTurns=0</span></code></p></li>
+</ul>
+</dd>
+</dl>
+<p>When we think about implementing the algorithm, we see that in the very beginning of <code class="docutils literal notranslate"><span class="pre">followWall()</span></code>,
+the robot needs to turn so that the wall is on its left. Normally it would be just a 90 degree right
+turn; however, if we are at a dead end, we need to turn 180 degrees. Thus, we need to know
+whether there is a passage to the right. Therefore, we add one more condition to the final state of <code class="docutils literal notranslate"><span class="pre">goToWall()</span></code>:</p>
+<ul class="simple">
+<li><p>Final state: robot is at the intersection, there is a wall ahead (i.e., no passage forward), <code class="docutils literal notranslate"><span class="pre">numTurns=0</span></code>, and global variable <code class="docutils literal notranslate"><span class="pre">passageRight</span></code> contains information about whether there is a passage to the right.</p></li>
+</ul>
+<p>To implement these two functions, we will make use of the functions <code class="docutils literal notranslate"><span class="pre">goToIntersection()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">checkIntersection()</span></code> which we used for the wall-following algorithm.
+Implementing <code class="docutils literal notranslate"><span class="pre">goToWall()</span></code> is trivial.</p>
+<p>For followWall(), in the beginning we must put</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">passageRight</span><span class="p">:</span>
+    <span class="n">turn</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+    <span class="n">numTurns</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># no passage to the right - need to turn 180</span>
+    <span class="n">turn</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+    <span class="n">numTurns</span> <span class="o">+=</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>After this, we do the regular line following algorithm: go to intersection, check intersection, turn
+as needed, except that we should exit the function if, after a “turn as needed”, we have <code class="docutils literal notranslate"><span class="pre">numTurns=0</span></code>.
+We leave it to you to complete the algorithm.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="maze1.html" class="btn btn-neutral float-left" title="Maze runner: wall following" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../library.html" class="btn btn-neutral float-right" title="Yozh Library Reference" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

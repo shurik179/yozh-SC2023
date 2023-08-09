@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Display, buttons, LEDs &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Motor control" href="motors.html" />
+    <link rel="prev" title="Initialization and general functions" href="init.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "library/UI", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../library.html">Yozh Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="init.html">Initialization and general functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="UI.html#">Display, buttons, LEDs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="UI.html#leds">LEDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UI.html#buzzer">Buzzer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UI.html#buttons">Buttons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UI.html#oled">OLED</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motor control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servos.html">Servos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reflectance.html">Reflectance sensor array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance.html">Distance sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imu.html">Inertial Motion Unit</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../library.html">Yozh Library Reference</a></li>
+      <li class="breadcrumb-item active">Display, buttons, LEDs</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/library/UI.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="display-buttons-leds">
+<h1>Display, buttons, LEDs<a class="headerlink" href="UI.html#display-buttons-leds" title="Permalink to this heading"></a></h1>
+<p>Yozh contains a buzzer,  two NeoPixel  LEDs in the back and an 128x64 OLED screen and
+two buttons on the top plate, for interaction with the user. To control them,
+use the functions below.</p>
+<section id="leds">
+<h2>LEDs<a class="headerlink" href="UI.html#leds" title="Permalink to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">set_led_L(color)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">set_led_R(color)</span></span></dt>
+<dd><p>These commands set the left (respectively, right) LED to given color. Color
+must be a list of 3 numbers, showing the values of Red, Green, and Blue
+colors, each ranging between 0–255, e.g. <code class="docutils literal notranslate"><span class="pre">bot.set_led_L([255,0,0])</span></code> to set
+the left LED red.  You can also define named colors for easier use, e.g.</p>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">BLUE</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">255</span><span class="p">]</span>
+
+<span class="n">bot</span><span class="o">.</span><span class="n">set_led_L</span><span class="p">(</span><span class="n">BLUE</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">set_leds(color_l,</span> <span class="pre">color_r)</span></span></dt>
+<dd><p>Set colors of both LEDs at the same time. As before, each color is a list of
+three values. Parameter <code class="docutils literal notranslate"><span class="pre">color_r</span></code> is optional; if omitted, both LEDs will
+be set to the same color.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">set_led_brightness(value)</span></span></dt>
+<dd><p>Set the maximal brightness of both LEDs to a given value (ranging 0-255).
+Default value is 64 (i.e., 1/4 of maximal brightness), and it is more than
+adequate for most purposes, so there is rarely a need to change it. Setting
+brightness to 255 would produce light bright enough to hurt your eyes (and
+drain the batteries rather quickly)</p>
+</dd></dl>
+
+</section>
+<section id="buzzer">
+<h2>Buzzer<a class="headerlink" href="UI.html#buzzer" title="Permalink to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">buzz(freq,</span> <span class="pre">dur=0.5)</span></span></dt>
+<dd><p>Buzz at given frequency (in hertz) for given duration (in seconds).
+Second parameter is optional; if omitted, duration of 0.5 seconds is used.</p>
+</dd></dl>
+
+</section>
+<section id="buttons">
+<h2>Buttons<a class="headerlink" href="UI.html#buttons" title="Permalink to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">wait_for(button)</span></span></dt>
+<dd><p>Waits until the user presses the given button. There are two possible
+pre-defined buttons: <code class="docutils literal notranslate"><span class="pre">bot.button_A</span></code> and <code class="docutils literal notranslate"><span class="pre">bot.button_B</span></code></p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">is_pressed(button)</span></span></dt>
+<dd><p>Returns <code class="docutils literal notranslate"><span class="pre">True</span></code> if given button is currently pressed and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">choose_button()</span></span></dt>
+<dd><p>Waits until the user presses one of the two buttons. This function returns
+string literal <code class="docutils literal notranslate"><span class="pre">A</span></code> or <code class="docutils literal notranslate"><span class="pre">B</span></code> depending on the pressed  button:</p>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;Press any button&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="c1">#wait until user presses one of buttons</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">choose_button</span><span class="p">()</span><span class="o">==</span><span class="s2">&quot;A&quot;</span><span class="p">):</span>
+    <span class="c1"># do something</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># button B was pressed</span>
+    <span class="c1"># do something else</span>
+</pre></div>
+</div>
+</section>
+<section id="oled">
+<h2>OLED<a class="headerlink" href="UI.html#oled" title="Permalink to this heading"></a></h2>
+<p>The easiest way to interact with OLED display is by using the commands below.</p>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">clear_display()</span></span></dt>
+<dd><p>Clears all text and graphics from display</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">set_text(text,</span> <span class="pre">line_number)</span></span></dt>
+<dd><p>Prints a line of text on OLED display, on line number <cite>line_number</cite>, erasing
+all previous contents of that line. Note
+that line numbers start with 0, not 1!
+If the text to print includes line break character <cite>n</cite>, the line is broken
+and continues on next line, e.g.</p>
+</dd></dl>
+
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;Initialized&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">set_text</span><span class="p">(</span><span class="s2">&quot;Press A to </span><span class="se">\n</span><span class="s2"> continue&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="init.html" class="btn btn-neutral float-left" title="Initialization and general functions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="motors.html" class="btn btn-neutral float-right" title="Motor control" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

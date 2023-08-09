@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maze runner: wall following &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maze runner: pledge algorithm" href="maze2.html" />
+    <link rel="prev" title="Line follower" href="follow_line.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "projects/maze1", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../projects.html">Projects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stay_inside.html">Stay inside the field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="follow_line.html">Line follower</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="maze1.html#">Maze runner: wall following</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maze2.html">Maze runner: pledge algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Yozh Library Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../projects.html">Projects</a></li>
+      <li class="breadcrumb-item active">Maze runner: wall following</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/projects/maze1.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="maze-runner-wall-following">
+<h1>Maze runner: wall following<a class="headerlink" href="maze1.html#maze-runner-wall-following" title="Permalink to this heading"></a></h1>
+<p>In this challenge, we will teach the robot find its way out of a maze.
+The maze is made of approx. 3x5 ft sheet of plywood, painted black.
+White masking tape (3/4 inch  wide) is used to mark passages
+forming the maze; these lines follow rectangular grid with
+0.5 ft squares.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/maze.png"><img alt="Front view" src="../_images/maze.png" style="width: 60%;" /></a>
+</figure>
+<p>Finding a way out of a maze is a classic problem, and there is a number of algorithms
+for doing that. The simplest of them is the wall following rule.</p>
+<p>Start following passages, and whenever you reach a junction always follow the
+leftmost open passage. This is  equivalent to a human walking in the  a maze by
+putting his  hand on the left wall and keeping it on the wall as he walks through.</p>
+<p>This method  is guaranteed to find an exit if we start at the entrance
+to the maze; then  this method allows us to explore a section
+of the maze and find our way out. However, it  is not guaranteed to
+find an exit if we start in the middle of the maze: the robot could be
+going in circles around an “island” inside the maze.</p>
+<p>The first draft of the program looks as follows (not including initialization
+and setup):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">go_to_intersection</span><span class="p">()</span>
+    <span class="n">check_intersection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">passage</span> <span class="n">to</span> <span class="n">the</span> <span class="n">left</span><span class="p">,</span> <span class="n">turn</span> <span class="n">left</span>
+    <span class="n">otherwise</span><span class="p">,</span> <span class="k">if</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">a</span> <span class="n">passage</span> <span class="n">forward</span><span class="p">,</span> <span class="n">go</span> <span class="n">forward</span>
+    <span class="n">otherwise</span><span class="p">,</span> <span class="n">turn</span> <span class="n">right</span>
+</pre></div>
+</div>
+<p>Function <cite>go_to_intersection()</cite> should follow the line until we reach an
+intersection (that is, until the reflectance sensors at the front of the robot
+are above an intersection). This function is very similar to line follower algorithm
+from the previous project, with added checks: it should stop when reflectance
+sensor A1 (rightmost) or A8 (leftmost) sees white.</p>
+<p>Function <cite>check_intersection()</cite> should do three things:</p>
+<ol class="arabic simple">
+<li><p>Slowly advance forward until  the center (not front!)  of the robot is
+above the intersection.</p></li>
+<li><p>While doing this, keep checking  whether there is a passage to the left
+and record it somehow; same for passage to the right</p></li>
+<li><p>once we advanced  so that the center of the robot is above the intersection,
+also check if there is a passage forward.</p></li>
+</ol>
+<p>We can achieve this by asking the robot to start moving  forward until
+we have travelled 5 cm;  while doing this, we will be checking the
+line sensors. If the leftmost line sensor (A8)  sees white, it means that
+there is a passage to the left. To record it, we can create boolean variable
+<cite>path_left</cite> and set it to <cite>True</cite> once the sensor A8 sees white
+(Also, we should remember to set it   to <cite>False</cite> initially):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_intersection</span><span class="p">():</span>
+    <span class="c1"># go forward while checking for intersection lines</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">reset_encoders</span><span class="p">()</span>
+    <span class="n">path_left</span> <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span> <span class="c1">#start moving forward slowly</span>
+    <span class="k">while</span> <span class="n">bot</span><span class="o">.</span><span class="n">get_distance</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">bot</span><span class="o">.</span><span class="n">sensor_on_white</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">A8</span><span class="p">):</span>
+            <span class="n">path_left</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">stop_motors</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>We should also add similar code for determining whether there is a path to
+the right (left to the reader as an exercise).</p>
+<p>Next, once we advanced, we need to check if there is a passage ahead.
+This is easy using <cite>all_on_black()</cite> function (if there is no passage forward,
+all sensors will be on black).</p>
+<p>Finally, we need somehow to return this information to whatever place in our
+program called this function. If we needed to return one value, we could just
+say <cite>return(path_left)</cite>, but here we need to return 3 boolean values:
+<cite>path_left</cite>, <cite>path_forward</cite>, <cite>path_right</cite>. One way to do that is to put them in  a list and
+return the list. This gives the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">check_intersection</span><span class="p">():</span>
+    <span class="c1"># go forward while checking for intersection lines</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">reset_encoders</span><span class="p">()</span>
+    <span class="n">path_left</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">path_forward</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="n">path_right</span>  <span class="o">=</span> <span class="kc">False</span>
+
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span> <span class="c1">#start moving forward slowly</span>
+    <span class="k">while</span> <span class="n">bot</span><span class="o">.</span><span class="n">get_distance</span><span class="p">()</span><span class="o">&lt;</span><span class="mi">5</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">bot</span><span class="o">.</span><span class="n">sensor_on_white</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">A8</span><span class="p">):</span>
+            <span class="n">path_left</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="o">....</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">stop_motors</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">bot</span><span class="o">.</span><span class="n">all_on_black</span><span class="p">():</span>
+        <span class="n">path</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="c1"># now, let us return the found values</span>
+    <span class="k">return</span><span class="p">([</span><span class="n">path_left</span><span class="p">,</span> <span class="n">path_forward</span><span class="p">,</span> <span class="n">path_right</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>Now we can write the main program:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">go_to_intersection</span><span class="p">()</span>
+    <span class="n">paths</span> <span class="o">=</span> <span class="n">check_intersection</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">paths</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+       <span class="c1"># path to the left is open</span>
+       <span class="n">bot</span><span class="o">.</span><span class="n">turn</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+   <span class="k">elif</span> <span class="n">paths</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+       <span class="c1"># path forward is open - do nothing, no need to turn</span>
+       <span class="k">pass</span>
+   <span class="k">elif</span> <span class="n">paths</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+       <span class="n">bot</span><span class="o">.</span><span class="n">turn</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="follow_line.html" class="btn btn-neutral float-left" title="Line follower" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="maze2.html" class="btn btn-neutral float-right" title="Maze runner: pledge algorithm" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

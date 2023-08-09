@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stay inside the field &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Line follower" href="follow_line.html" />
+    <link rel="prev" title="Projects" href="../projects.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "projects/stay_inside", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../projects.html">Projects</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="stay_inside.html#">Stay inside the field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="follow_line.html">Line follower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maze1.html">Maze runner: wall following</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maze2.html">Maze runner: pledge algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Yozh Library Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../projects.html">Projects</a></li>
+      <li class="breadcrumb-item active">Stay inside the field</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/projects/stay_inside.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="stay-inside-the-field">
+<h1>Stay inside the field<a class="headerlink" href="stay_inside.html#stay-inside-the-field" title="Permalink to this heading"></a></h1>
+<p>We begin with a very simple project: staying in the field. Here, we assume
+that we have a black field (such as black painted plywood) with boundary
+marked by white tape. The goal is to program the robot to stay within the field
+boundaries.</p>
+<p>First attempt (in pseudocode, not including the intialization):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">go</span> <span class="n">forward</span> <span class="n">until</span> <span class="n">robot</span> <span class="n">sees</span> <span class="n">white</span> <span class="n">boundary</span>
+<span class="n">turn</span> <span class="n">around</span>
+</pre></div>
+</div>
+<p>To see the boundary, we use reflectance sensor array, namely function
+<cite>all_on_black()</cite>: if this function returns <cite>False</cite>, at least one of the sensors
+sees the white boundary. We also replace “go forward until…” by more common <cite>while</cite> loop:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+<span class="k">while</span> <span class="n">bot</span><span class="o">.</span><span class="n">all_on_black</span><span class="p">():</span>
+    <span class="k">pass</span>
+<span class="c1">#if we are here, it means at least one of sensors sees white</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">stop_motors</span><span class="p">()</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">turn</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that there is no need to set motor speed inside <cite>while bot.all_on_black()</cite>
+loop: the motors are already running and will continue doing so until you
+explicitly stop them .
+`</p>
+<p>Finally, we enclose it in <cite>while True</cite> loop to make it repeat forever:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">bot</span><span class="o">.</span><span class="n">all_on_black</span><span class="p">():</span>
+        <span class="k">pass</span>
+    <span class="c1">#if we are here, it means at least one of sensors sees white</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">stop_motors</span><span class="p">()</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">turn</span><span class="p">(</span><span class="mi">180</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This is far from optimal. For example, if it is the right sensor that sees the
+boundary, it makes sense to turn left rather than turn 180 degrees:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+    <span class="k">while</span> <span class="n">bot</span><span class="o">.</span><span class="n">all_on_black</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="c1">#if we are here, it means at least one of sensors sees white</span>
+    <span class="k">if</span> <span class="n">bot</span><span class="o">.</span><span class="n">sensor_on_white</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">A1</span><span class="p">):</span>
+        <span class="n">turn</span><span class="p">(</span><span class="o">-</span><span class="mi">120</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">turn</span><span class="p">(</span><span class="mi">120</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../projects.html" class="btn btn-neutral float-left" title="Projects" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="follow_line.html" class="btn btn-neutral float-right" title="Line follower" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

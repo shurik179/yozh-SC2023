@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Python Primer &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Projects" href="projects.html" />
+    <link rel="prev" title="Next steps" href="quickstart/further.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "primer", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="primer.html#">Python Primer</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#comments">Comments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#variables">Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#lists">Lists</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#python-control-structures">Python control structures</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="primer.html#conditional">Conditional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="primer.html#loops">Loops</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#functions">Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#printing">Printing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#time-control">Time control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primer.html#miscellaneous">Miscellaneous</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="library.html">Yozh Library Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Python Primer</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/primer.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="python-primer">
+<span id="primer"></span><h1>Python Primer<a class="headerlink" href="primer.html#python-primer" title="Permalink to this heading"></a></h1>
+<p>These commands are not directly related to Yozh, but can serve as useful cheat
+sheet for people new to MicroPython.</p>
+<p>For more information about MicroPython on RP2040 microcontrollers, see
+<a class="reference external" href="https://docs.micropython.org/en/latest/rp2/quickref.html#">MicroPython website</a>.</p>
+<p>Remember  that in Python, indentation is important!</p>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="primer.html#comments" title="Permalink to this heading"></a></h2>
+<p>Single line comments are indicated by #: anything after # till the end of the line is ignored by the computer.
+Multiline comments are indicated by three double quote symbols:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">This is a</span>
+<span class="sd">multiline comment</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="variables">
+<h2>Variables<a class="headerlink" href="primer.html#variables" title="Permalink to this heading"></a></h2>
+<p>In Python, you do not need to declare a variable; you can just start using it:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="mf">20.5</span> <span class="c1">#float (decimal) number</span>
+
+<span class="n">address</span> <span class="o">=</span> <span class="mh">0x29</span> <span class="c1">#hexadecimal number</span>
+
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;Welcome&quot;</span> <span class="c1">#string</span>
+</pre></div>
+</div>
+<p>As any computer language, Python also has logic (boolean) variables. It has two
+predefined logic  constants: <cite>True</cite>, <cite>False</cite></p>
+<p>You can use common logic operations: <cite>and</cite>, <cite>or</cite>, <cite>not</cite>.
+Note that unlike many other languages, Python doesn’t use &amp;&amp; and || for logic operations</p>
+<p>Comparison: to compare if two values are equal,  use == operator:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span><span class="o">==</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">y</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">:</span>
+   <span class="o">...</span>
+</pre></div>
+</div>
+<p>Warning: Writing <cite>if x=5</cite> would give a very different result (single equality
+is assignment, not comparison) - this is one of the most common beginner mistakes
+in any programming language</p>
+</section>
+<section id="lists">
+<h2>Lists<a class="headerlink" href="primer.html#lists" title="Permalink to this heading"></a></h2>
+<p>Lists in Python are analogs of arrays in other languages.
+To define a list, use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To access i-th item in the list, use <cite>list[i]</cite>. Note that in a list  of N
+elements, index ranges from 0 to N-1.</p>
+<p>To find current length of a list, use function <cite>len(list)</cite>.</p>
+<p>To append one item  the list at the end, use <cite>append()</cite> function:
+<cite>list.append(“D”)</cite></p>
+<p>To join (concatenate) two lists, you can use +:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">list</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">]</span><span class="o">+</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">,</span> <span class="s2">&quot;Y&quot;</span><span class="p">,</span> <span class="s2">&quot;Z&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>There are other list-related functions - check Python docs.</p>
+</section>
+<section id="python-control-structures">
+<h2>Python control structures<a class="headerlink" href="primer.html#python-control-structures" title="Permalink to this heading"></a></h2>
+<section id="conditional">
+<h3>Conditional<a class="headerlink" href="primer.html#conditional" title="Permalink to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+   <span class="n">some</span> <span class="n">operators</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="n">other</span> <span class="n">operators</span>
+</pre></div>
+</div>
+<p><cite>else:</cite> part is optional. Note that there is no need to enclose condition
+in parentheses (but no harm if you do it anyway). If you need more options,
+use the form below; <cite>elif</cite> is short for <cite>else if</cite></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition</span><span class="p">:</span>
+   <span class="n">some</span> <span class="n">operators</span>
+<span class="k">elif</span><span class="p">:</span>
+   <span class="n">some</span> <span class="n">more</span> <span class="n">operators</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="n">other</span> <span class="n">operators</span>
+</pre></div>
+</div>
+</section>
+<section id="loops">
+<h3>Loops<a class="headerlink" href="primer.html#loops" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Common while loop:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">condition</span><span class="p">:</span>
+   <span class="n">operators</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>For loop: repeat for every value of <cite>i</cite> from the list.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+  <span class="n">operators</span>
+  <span class="o">...</span>
+  <span class="n">operators</span>
+</pre></div>
+</div>
+<p>A list can be defined  explicitly, e.g. list = [“A”, “B”, “C”].
+More commonly, if you want the  loop to be repeated N times,
+for all values of i from 0 to N-1, you use <cite>for i in range(N)</cite></p>
+</section>
+</section>
+<section id="functions">
+<h2>Functions<a class="headerlink" href="primer.html#functions" title="Permalink to this heading"></a></h2>
+<p>You can define your own function and call it later:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;20!=</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">factorial</span><span class="p">(</span><span class="mi">20</span><span class="p">)))</span>
+</pre></div>
+</div>
+<p>Note: a function must be defined <strong>before</strong> it is called. Also, please note that
+a function can not access variables defined outside of the function; if you need
+this, read about global variables in Python docs.</p>
+</section>
+<section id="printing">
+<h2>Printing<a class="headerlink" href="primer.html#printing" title="Permalink to this heading"></a></h2>
+<p>To print a message to standard output (for programs running on the robot, it
+would be Shell tab of Thonny editor), use <cite>print()</cite> function:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The argument can be a string, a variable, or any other expression.
+You can also provide several arguments separated by commas: <cite>print(x,y,z)</cite>.</p>
+<p>By default, every print command will also print a newline at the end, moving
+to the next line in the output. To suppress it, use <cite>end</cite> parameter:
+<cite>print(“Hello, world!”, end = “”)</cite></p>
+<p>(in this case, end parameter is the empty string)</p>
+<p>To print a message containing some numerical values (or other variable types),
+insert in your message placeholders {} in the places where numerical values
+would go, and then use <cite>format</cite> function as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">message</span> <span class="o">=</span> <span class="s2">&quot;Acceleration: x=</span><span class="si">{}</span><span class="s2"> y=</span><span class="si">{}</span><span class="s2"> z=</span><span class="si">{}</span><span class="s2">&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">a_x</span><span class="p">,</span> <span class="n">a_y</span><span class="p">,</span> <span class="n">a_z</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>It is also possible to format the numbers, specifying how many decimal places
+you want printed; refer to Python documentation for details.</p>
+</section>
+<section id="time-control">
+<h2>Time control<a class="headerlink" href="primer.html#time-control" title="Permalink to this heading"></a></h2>
+<p>The commands below  are defined in <cite>time</cite> module.  Thus, to use them you must put
+<cite>include time</cite>  in your Python file.</p>
+<p>To pause the execution of the program for given time, use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">time_in_seconds</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To time various events, you can use the <cite>time.ticks_ms()</cite> milliseond counter
+(this is specific to RP2040 microcontoller):</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="o">...</span>
+<span class="n">t1</span><span class="o">=</span><span class="n">time</span><span class="o">.</span><span class="n">ticks_ms</span><span class="p">()</span>
+<span class="n">time_interval</span> <span class="o">=</span> <span class="n">t1</span><span class="o">-</span><span class="n">t0</span> <span class="c1">#duration in milliseconds</span>
+</pre></div>
+</div>
+</section>
+<section id="miscellaneous">
+<h2>Miscellaneous<a class="headerlink" href="primer.html#miscellaneous" title="Permalink to this heading"></a></h2>
+<p>Python has a special name for non-existing (undefined) values, <cite>None</cite>. Thus,
+to test if  a variable has been defined,  you can use</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+   <span class="o">...</span>
+</pre></div>
+</div>
+<p>(for technical reasons, you can’t use if <cite>x==None</cite>).</p>
+<p>Note that it is different from value 0 or empty string. <cite>None</cite> means that the
+variable has not been defined yet, which is different from being defined and
+given 0 value.</p>
+<p>Also, Python has a special function that does nothing, named <cite>pass</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">sensor_on_white</span><span class="p">(</span><span class="n">bot</span><span class="o">.</span><span class="n">A1</span><span class="p">)):</span>
+   <span class="k">pass</span>
+</pre></div>
+</div>
+<p>This is commonly used as a placeholder to be replaced later by actual commands.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quickstart/further.html" class="btn btn-neutral float-left" title="Next steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="projects.html" class="btn btn-neutral float-right" title="Projects" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

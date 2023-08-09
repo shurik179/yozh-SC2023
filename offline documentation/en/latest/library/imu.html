@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inertial Motion Unit &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Distance sensors" href="distance.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "library/imu", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../library.html">Yozh Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="init.html">Initialization and general functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UI.html">Display, buttons, LEDs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="motors.html">Motor control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="servos.html">Servos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reflectance.html">Reflectance sensor array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance.html">Distance sensors</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="imu.html#">Inertial Motion Unit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="imu.html#initialization">Initialization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imu.html#calibration">Calibration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="imu.html#reading-values">Reading Values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../library.html">Yozh Library Reference</a></li>
+      <li class="breadcrumb-item active">Inertial Motion Unit</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/library/imu.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="inertial-motion-unit">
+<span id="imu"></span><h1>Inertial Motion Unit<a class="headerlink" href="imu.html#inertial-motion-unit" title="Permalink to this heading"></a></h1>
+<p>This section describes the functions for using the built-in Inertial Motion
+Unit (IMU).</p>
+<p>Yozh contains a built-in Inertial Motion Unit (IMU), which is based on
+LSM6DSL chip from ST Microelectronics. This chip combines a 3-axis accelerometer and a
+3-axis gyro sensor, which provide information about acceleration and rotational
+speed. The sensor is placed on the back side of the top plate.
+Yozh firmware combines the sensor data to provide information
+about robot’s orientation in space, in the form of Yaw, Pitch, and Roll angles.
+(Yozh firmware is based on the work of
+<a class="reference external" href="https://github.com/kriswiner">Kris Winer</a> and uses data fusion
+algorithm invented by Sebastian Madgwick.)</p>
+<p>Below is the description of functions related to IMU. You can also  check sample
+code in <span class="guilabel">imu_test</span> example sketch included with Yozh CircuitPython library.</p>
+<section id="initialization">
+<h2>Initialization<a class="headerlink" href="imu.html#initialization" title="Permalink to this heading"></a></h2>
+<p>By default, the IMU is inactive. To start/stop  it, use the functions below.</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_start">
+<span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_start</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_start" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Activate IMU</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_stop">
+<span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_stop</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_stop" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Stop the IMU</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_status">
+<span class="kt"><span class="pre">bool</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_status</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_status" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Returns IMU status. This function can be used to verify that IMU
+activation was successful. Possible values are:</p>
+<ul class="simple">
+<li><p>0: IMU is inactive</p></li>
+<li><p>1: IMU is active</p></li>
+<li><p>2: IMU is currently in the process of calibration</p></li>
+</ul>
+</dd></dl>
+
+</section>
+<section id="calibration">
+<h2>Calibration<a class="headerlink" href="imu.html#calibration" title="Permalink to this heading"></a></h2>
+<p>Before use, the IMU needs to be calibrated. The calibration process determines
+and then applies corrections (offsets)  to the raw data; without these
+corrections, the  data returned by the sensor is very inaccurate.</p>
+<p>If you haven’t  calibrated the sensor before (or want to recalibrate it),
+use the following function:</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_calibrate">
+<span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_calibrate</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_calibrate" title="Permalink to this definition"></a><br /></dt>
+<dd><p>This function will determine and
+apply the corrections; it will also save these corrections in the
+flash storage of the Yozh slave microcontroller, where they will be
+stored for future use.  This data is preserved even after you power
+off the robot (much like the usual USB flash drive).</p>
+<p>This function will take about 10  seconds to execute; during this time,
+the robot must be completely stationary on a flat horizontal surface.</p>
+</dd></dl>
+
+<p>If you had previously calibrated the sensor, you do not need to repeat the
+calibration process - by default, upon initialization the IMU loads previously
+saved calibration values.</p>
+<p>Note that the IMU is somewhat sensitive to temperature changes, so if the
+temperature changes (e.g., you moved your robot from indoors to the street for
+testing), it is advised that you recalibrate the IMU.</p>
+</section>
+<section id="reading-values">
+<h2>Reading Values<a class="headerlink" href="imu.html#reading-values" title="Permalink to this heading"></a></h2>
+<p>Yozh  allows you to read both the raw data (accelerometer and gyro readings)
+and computed orientation, using the following functions:</p>
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_get_accel">
+<span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_get_accel</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_get_accel" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Fetches from  the sensor  raw acceleration data and saves it using member
+variables <code class="docutils literal notranslate"><span class="pre">ax</span></code>, <code class="docutils literal notranslate"><span class="pre">ay</span></code>, <code class="docutils literal notranslate"><span class="pre">az</span></code>, which give the acceleration
+in x-, y-, and z- directions respectively in in units of 1g
+(9.81 m/<img class="math" src="https://yozh-sc2023.readthedocs.io/en/latest/library/_images/math/c1af07882544c8512ec644bee61f8fc9e4d495a8.svg" alt="sec^2"/>) as floats.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_get_gyro">
+<span class="kt"><span class="pre">void</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_get_gyro</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_get_gyro" title="Permalink to this definition"></a><br /></dt>
+<dd><p>Fetches from the sensor  raw gyro data and saves it using member variables
+<code class="docutils literal notranslate"><span class="pre">gx</span></code>, <code class="docutils literal notranslate"><span class="pre">gy</span></code>, <code class="docutils literal notranslate"><span class="pre">gz</span></code>, which give the angular rotation velocity around
+x-, y-, and z- axes respectively, in degree/s (as floats).</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_yaw">
+<span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_yaw</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_yaw" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_pitch">
+<span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_pitch</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_pitch" title="Permalink to this definition"></a><br /></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c" id="c.IMU_roll">
+<span class="kt"><span class="pre">float</span></span><span class="w"> </span><span class="sig-name descname"><span class="n"><span class="pre">IMU_roll</span></span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="imu.html#c.IMU_roll" title="Permalink to this definition"></a><br /></dt>
+<dd><p>These functions return yaw, pitch, and roll angles for the robot, in degrees.
+These three angles determine the robot orientation as described below:</p>
+<ul class="simple">
+<li><p>yaw is the rotation around the vertical axis (positive angle corresponds to
+clockwise rotation, i.e. right turns), relative to the starting position of
+the robot</p></li>
+<li><p>pitch is the rotation around the horizontal line, running from
+left to right. Positive pitch angle corresponds to raising the front of the
+robot and lowering the back</p></li>
+<li><p>roll is the rotation around the horizontal line running from front to back.
+Positive roll angle corresponds to raising the left side of the robot and
+lowering the right.</p></li>
+</ul>
+<p>For more information about yaw, pitch, and roll angles, please visit
+<a class="reference external" href="https://en.wikipedia.org/wiki/Aircraft_principal_axes">https://en.wikipedia.org/wiki/Aircraft_principal_axes</a></p>
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="distance.html" class="btn btn-neutral float-left" title="Distance sensors" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

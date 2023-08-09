@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Line follower &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Maze runner: wall following" href="maze1.html" />
+    <link rel="prev" title="Stay inside the field" href="stay_inside.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "projects/follow_line", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../projects.html">Projects</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="stay_inside.html">Stay inside the field</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="follow_line.html#">Line follower</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maze1.html">Maze runner: wall following</a></li>
+<li class="toctree-l2"><a class="reference internal" href="maze2.html">Maze runner: pledge algorithm</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../library.html">Yozh Library Reference</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../projects.html">Projects</a></li>
+      <li class="breadcrumb-item active">Line follower</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/projects/follow_line.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="line-follower">
+<h1>Line follower<a class="headerlink" href="follow_line.html#line-follower" title="Permalink to this heading"></a></h1>
+<p>In this chapter, we program the robot to follow a line on the floor.
+We will make a line by putting 1/2-inch wide
+white gaffers tape on a black surface (a sheet of plywood painted black).
+You can make your own field; just make sure the line is at least half  inch
+wide and doesn’t have sharp turns.</p>
+<p>Before we start writing code, we need to describe the algorithm the robot
+will be using - first in human language, then translate it to Python.</p>
+<p>The obvious algorithm is “start on the line; go forward until you get off
+the line; turn to get back on the
+line; repeat”.</p>
+<p>However, this algorithm will result in very jerky movement: the robot
+will only start correcting its course when it gets completely off the line.
+Since we have a whole array of front line sensors, we can use them
+to detect even small deviation from the right course - when the robot is still
+on the line, but the line is not exactly under the center of the robot - and start
+correcting before we get off the line. Yozh library provides a function that allows one
+to determine the position of the line relative to the center of the robot:
+<cite>line_position_white()</cite>, which returns values ranging from -5 to 5.</p>
+<p>To correct, we would be going forward but
+steering more to the left or right as needed: if the line is to the left of the robot
+center, we must be steering left; if the line is to the right, we must be steering right.</p>
+<p>This leads to the following algorithm</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">get</span> <span class="n">the</span> <span class="n">line</span> <span class="n">position</span>
+    <span class="n">go</span> <span class="n">forward</span> <span class="n">steering</span> <span class="n">left</span> <span class="ow">or</span> <span class="n">right</span> <span class="k">as</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">correct</span> <span class="n">the</span> <span class="n">position</span>
+</pre></div>
+</div>
+<p>Note that here we are continuously correcting our steering using the sensor
+feedback.  To translate this algorithm to an actual program, we need to
+explain how one steers left or right.  This is easy: to have the robot
+steer to the right, we need left motor to have more power than the right.
+Thus, instead of having both motors running at 50%, we could use</p>
+<blockquote>
+<div><p><cite>setMotors(50+correction, 50-correction)</cite>.</p>
+</div></blockquote>
+<p>It makes sense to have the parameter <cite>correction</cite>  <strong>proportional</strong> to the
+difference between the actual line position and the desired one: the
+farther off we are,  the more we need to turn.</p>
+<p>This gives the following program</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">bot</span><span class="o">.</span><span class="n">line_position_white</span><span class="p">()</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">50</span><span class="o">+</span><span class="n">Kp</span><span class="o">*</span><span class="n">error</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Double-check the sign: if <cite>error</cite> is negative (line to the left), we need to
+be steering left, so the left motor should have less  power than the right;
+if <cite>error</cite> is positive, we will be steering right.</p>
+<p>The value of the coefficient <cite>Kp=9</cite> was chosen so that when the line is
+all the way to one side (error= -5), the motors will be given power
+50+45=95, 50-45=5</p>
+<p>You can test what happens if Kp=9 is replaced by another value. If the
+value is too large, the robot will turn very quickly even for small
+errors, which can lead to the robot spending most time turning left
+and right, with very little headway. If the value is too small, the
+robot will be turning very little, which can cause it to miss a sharp
+turn. You can experiment to find the best value.</p>
+<p>The same idea of correcting the course using sensor feedback, with
+the correction proportional to the error, can be used in many
+other situations. Instead of following the line, we could use it
+to turn to  face an obstacle (using front proximity sensors), or
+face up on an inclined surface, or many other similar situations.</p>
+<p>The code above still has one problem. Namely, when we reach the end of the
+line, function <cite>line_posiiton_white()</cite> will return <cite>None</cite>, which will cause
+an error in the next line: you can’t use <cite>None</cite> in an arithmetic expression.
+Thus, we need an extra check to catch that.</p>
+<p>A natural idea would be to replace <cite>while True</cite> by <cite>while error is not None</cite>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="k">while</span> <span class="n">bot</span><span class="o">.</span><span class="n">line_position_white</span><span class="p">()</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">bot</span><span class="o">.</span><span class="n">line_position_white</span><span class="p">()</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">50</span><span class="o">+</span><span class="n">Kp</span><span class="o">*</span><span class="n">error</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="n">error</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This, however, is not enough - do you see why?</p>
+<p>Here is a corrected version:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">Kp</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="n">error</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">error</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="n">bot</span><span class="o">.</span><span class="n">set_motors</span><span class="p">(</span><span class="mi">50</span><span class="o">+</span><span class="n">Kp</span><span class="o">*</span><span class="n">error</span><span class="p">,</span><span class="mi">50</span><span class="o">-</span><span class="n">Kp</span><span class="o">*</span><span class="n">error</span><span class="p">)</span>
+    <span class="n">error</span> <span class="o">=</span> <span class="n">bot</span><span class="o">.</span><span class="n">line_position_white</span><span class="p">()</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">stop_motors</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>As before, you also need to include the code for initialization and sensor
+calibration.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stay_inside.html" class="btn btn-neutral float-left" title="Stay inside the field" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="maze1.html" class="btn btn-neutral float-right" title="Maze runner: wall following" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Motor control &mdash; Yozh Robot  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/graphviz.css" type="text/css" />
+    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+        <script async="async" src="../../../_/static/javascript/readthedocs-doc-embed.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Servos" href="servos.html" />
+    <link rel="prev" title="Display, buttons, LEDs" href="UI.html" /> 
+
+<!-- RTD Extra Head -->
+
+<link rel="stylesheet" href="../../../_/static/css/readthedocs-doc-embed.css" type="text/css" />
+
+<script type="application/json" id="READTHEDOCS_DATA">{"ad_free": false, "api_host": "https://readthedocs.org", "builder": "sphinx", "canonical_url": null, "docroot": "/docs/", "features": {"docsearch_disabled": false}, "global_analytics_code": "UA-17997319-1", "language": "en", "page": "library/motors", "programming_language": "words", "project": "yozh-sc2023", "proxied_api_host": "/_", "source_suffix": ".rst", "subprojects": {}, "theme": "sphinx_rtd_theme", "user_analytics_code": "", "version": "latest"}</script>
+
+<!--
+Using this variable directly instead of using `JSON.parse` is deprecated.
+The READTHEDOCS_DATA global variable will be removed in the future.
+-->
+<script type="text/javascript">
+READTHEDOCS_DATA = JSON.parse(document.getElementById('READTHEDOCS_DATA').innerHTML);
+</script>
+
+<script type="text/javascript" src="../../../_/static/javascript/readthedocs-analytics.js" async="async"></script>
+
+<!-- end RTD <extrahead> -->
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Yozh Robot
+          </a>
+              <div class="version">
+                latest
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../quickstart.html">Quick start guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../primer.html">Python Primer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projects.html">Projects</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../library.html">Yozh Library Reference</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="init.html">Initialization and general functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UI.html">Display, buttons, LEDs</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="motors.html#">Motor control</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="motors.html#basic-control">Basic control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="motors.html#encoders">Encoders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="motors.html#pid">PID</a></li>
+<li class="toctree-l3"><a class="reference internal" href="motors.html#drive-control">Drive control</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="servos.html">Servos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reflectance.html">Reflectance sensor array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distance.html">Distance sensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="imu.html">Inertial Motion Unit</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Yozh Robot</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../library.html">Yozh Library Reference</a></li>
+      <li class="breadcrumb-item active">Motor control</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/shurik179/yozh-SC2023/blob/main/docs/library/motors.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="motor-control">
+<h1>Motor control<a class="headerlink" href="motors.html#motor-control" title="Permalink to this heading"></a></h1>
+<p>Of course, main use of this robot is to drive around, and for this, we need to
+control the motors.</p>
+<section id="basic-control">
+<h2>Basic control<a class="headerlink" href="motors.html#basic-control" title="Permalink to this heading"></a></h2>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">set_motors(power_L,</span> <span class="pre">power_R)</span></span></dt>
+<dd><p>Set power for left and right motors. <code class="docutils literal notranslate"><span class="pre">power_L</span></code> is power to left motor,
+<code class="docutils literal notranslate"><span class="pre">power_R</span></code> is power to right motor. Each of them should be  between 100
+(full speed forward) and -100 (full speed backward).</p>
+<p>Note that because no two motors are exactly identical, even if you give
+both motors same power (e.g. <code class="docutils literal notranslate"><span class="pre">set_motors(60,60)</span></code>), their speeds might be
+slightly different, causing the robot to veer to one side instead of moving
+straight. To fix that, use PID control as described below.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">stop_motors()</span></span></dt>
+<dd><p>Stop  both motors.</p>
+</dd></dl>
+
+</section>
+<section id="encoders">
+<h2>Encoders<a class="headerlink" href="motors.html#encoders" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Both motors are equipped with encoders (essentially, rotation counters).
+For 75:1 HP motors, each motor at full speed produces about 4200 encoder ticks
+per second.</p>
+</div></blockquote>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">reset_encoders()</span></span></dt>
+<dd><p>Resets both encoders</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">get_encoders()</span></span></dt>
+<dd><p>Gets values of both encoders and saves them. These values can be accessed as
+described below</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">encoder_L</span></span></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">encoder_R</span></span></dt>
+<dd><p>Value of left and right  encoders, in ticks, as fetched at last call of
+<code class="docutils literal notranslate"><span class="pre">get_encoders()</span></code>. Note that these values are not automatically updated:
+you need to call <code class="docutils literal notranslate"><span class="pre">get_encoders()</span></code> to update them</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">get_speeds()</span></span></dt>
+<dd><p>Gets the  speeds of both motors  and saves them. These values can be accessed as
+described below</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">speed_L</span></span></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">speed_R</span></span></dt>
+<dd><p>Speed of left and right motors,  in ticks/second, as fetched at last call of
+<code class="docutils literal notranslate"><span class="pre">get_speeds()</span></code>. Note that these values are not automatically updated:
+you need to call <code class="docutils literal notranslate"><span class="pre">get_speeds()</span></code> to update them</p>
+</dd></dl>
+
+</section>
+<section id="pid">
+<h2>PID<a class="headerlink" href="motors.html#pid" title="Permalink to this heading"></a></h2>
+<p>PID is an abbreviation for Proportional-Integral-Differential control. This is
+the industry standard way of using feedback (in this case, encoder values) to
+maintain some parameter (in this case, motor speed) as close as possible to
+target value.</p>
+<p>Yozh bot has PID control built-in; however, it is not enabled by default. To
+enable/disable PID, use the functions below.</p>
+<p>Before enabling PID, you need to provide some information necessary for its
+proper operation.  At the very minimum, you need to provide the speed of the
+motors when running at maximal power. For 75:1 motors, it is about 4200
+ticks/second; for other motors, you can find it by running <code class="docutils literal notranslate"><span class="pre">motors_test.py</span></code> example.</p>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">configure_PID(maxspeed)</span></span></dt>
+<dd><p>Configures parameters of PID algorithm, using motors maximal speed in
+encoder ticks/second.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">PID_on()</span></span></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">PID_off()</span></span></dt>
+<dd><p>Enables/disables  PID control (for both motors).</p>
+</dd></dl>
+
+<p>Once PID is enabled, you can use same functions as before (<code class="docutils literal notranslate"><span class="pre">set_motors()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">stop_motors()</span></code>) to control the motors, but now these functions will use
+encoder feedback to maintain desired motor speed.</p>
+</section>
+<section id="drive-control">
+<h2>Drive control<a class="headerlink" href="motors.html#drive-control" title="Permalink to this heading"></a></h2>
+<p>Yozh python library also provides higher level commands for controlling the robot.</p>
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">go_forward</span> <span class="pre">(distance,</span> <span class="pre">speed=50)</span></span></dt>
+<dd></dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">go_backward(distance,</span> <span class="pre">speed=50)</span></span></dt>
+<dd><p>Move forward/backward  by given distance (in centimeters). Parameter <code class="docutils literal notranslate"><span class="pre">speed</span></code> is
+optional; if not given, default speed of 50 (i.e. half of maximal) is used.</p>
+<p>Note that distance and speed should always be positive, even when moving backward.</p>
+</dd></dl>
+
+<dl class="c function">
+<dt class="sig sig-object c">
+<span class="sig-name descname"><span class="pre">turn(angle,</span> <span class="pre">speed=50)</span></span></dt>
+<dd><p>Turn by given angle, in degrees. Positive values correspond to turning right (clockwise).
+Parameter <code class="docutils literal notranslate"><span class="pre">speed</span></code> is  optional; if not given, default speed of 50 (i.e. half of maximal) is used.</p>
+</dd></dl>
+
+<p>Note that all of these commands use encoder readings to determine how far to
+drive or turn. Of course, to do this one needs to know how to convert from
+centimeters or degrees to encoder ticks. This information is stored in properties
+<code class="docutils literal notranslate"><span class="pre">bot.CM_TO_TICKS</span></code> and <code class="docutils literal notranslate"><span class="pre">bot.DEG_TO_TICKS</span></code>. By default, Yozh library uses
+<code class="docutils literal notranslate"><span class="pre">CM_TO_TICKS</span> <span class="pre">=</span> <span class="pre">150</span></code>, <code class="docutils literal notranslate"><span class="pre">DEG_TO_TICKS=14</span></code>, which should be correct for 75:1 motors.
+If you find that the robot consistently turns too much (or too little), you can change these values, e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bot</span><span class="o">.</span><span class="n">DEG_TO_TICKS</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">bot</span><span class="o">.</span><span class="n">turn</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="UI.html" class="btn btn-neutral float-left" title="Display, buttons, LEDs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="servos.html" class="btn btn-neutral float-right" title="Servos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Alexander Kirillov.
+      <span class="commit">Revision <code>c24d38fd</code>.
+      </span></p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="Versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="../index.html">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/pdf/">pdf</a></dd>
+        
+          <dd><a href="https://yozh-sc2023.readthedocs.io/_/downloads/en/latest/htmlzip/">html</a></dd>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="https://readthedocs.org/projects/yozh-sc2023/?fromdocs=yozh-sc2023">Project Home</a>
+          </dd>
+          <dd>
+            <a href="https://readthedocs.org/builds/yozh-sc2023/?fromdocs=yozh-sc2023">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

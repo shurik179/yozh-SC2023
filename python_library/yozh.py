@@ -430,7 +430,8 @@ class Yozh:
         Color should be list of 3 values, R, G, B, each ranging 0...255
         e.g. color = [0,0,255]
         """
-        self._write_8_array(YOZH_REG_NEOPIXEL_L, color)
+        self._write_8_array(YOZH_REG_NEOPIXEL_L, bytes(color))
+        
     def set_led_R(self, color):
         """
         Sets color of right LED.
@@ -530,6 +531,14 @@ class Yozh:
                 on_black = False
         return on_black
 
+    def all_on_white(self):
+        raw_values = [0]*8
+        self._read_16_array(YOZH_REG_LINEARRAY_RAW, raw_values)
+        on_white = True
+        for i in range(8):
+            if raw_values[i] <self._threshold:
+                on_white = False
+        return on_white
 
     def line_position_white(self):
         """

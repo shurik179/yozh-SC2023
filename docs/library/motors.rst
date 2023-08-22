@@ -64,6 +64,12 @@ Encoders
 
 
 
+.. function:: get_distance()
+
+   Returns distance (in cm) travelled by the robot since the last encoder reset. 
+
+
+
 PID
 ---
 
